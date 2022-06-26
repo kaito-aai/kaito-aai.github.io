@@ -1,4 +1,4 @@
 theme = "PaperMod"
-baseURL = 'http://example.org/'
+baseURL = 'https://kaito-aai.github.io'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'メモ'
