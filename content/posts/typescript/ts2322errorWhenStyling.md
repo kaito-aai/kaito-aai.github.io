@@ -1,6 +1,6 @@
 ---
 title: "Widening"
-date: 2022-06-27T01:05:38+09:00
+date: 2022-06-27T23:58:38+09:00
 draft: false
 ---
 
