@@ -47,6 +47,24 @@
 <main class=main>
 <article class=first-entry>
 <header class=entry-header>
+<h2>React: i18nextで多言語対応
+</h2>
+</header>
+<div class=entry-content>
+<p>Reactで多言語対応をしたときの手順メモ
+言語はブラウザに設定されたものを利用する前提
+使うもの
+https://www.i18next.com/ https://github.com/i18next/i18next-browser-languageDetector/tree/master i18next-browser-languagedetectorでブラウザの言語を扱えるようになる 1. インストール npm install react-i18next i18next i18next-browser-languagedetector –save
+2. 設定 i18n用ファイルを用意し、多言語用リソースを扱うための諸々を設定
+以下のファイルを追加
+i18n.ts
+import i18n from "i18next"; import LanguageDetector from 'i18next-browser-languagedetector'; import { initReactI18next } from "react-i18next"; const resources = { ja: { translation: { "Title": "ホームページ", } }, en: { translation: { "Title": "Home Page", } } }; i18n.use(initReactI18next) .use(LanguageDetector) .init({ // lng: 'en' &lt;-　LanguageDetectorが機能しないのでこの設定は削除 resources, fallbackLng: 'en', supportedLngs: ['en', 'ja'], interpolation: { escapeValue: false }, detection: { // navigatorの優先度を上げる order: ['navigator'], // デフォルトの設定だとlocalStorage, cookieにcacheするようになっている。 // ブラウザの設定を参照したいので削除 caches: [] } }) export default i18n; 3....</p>
+</div>
+<footer class=entry-footer><span title="2022-06-29 17:30:11 +0900 +0900">June 29, 2022</span></footer>
+<a class=entry-link aria-label="post link to React: i18nextで多言語対応" href=https://kaito-aai.github.io/posts/react/multilang-i18next/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Widening
 </h2>
 </header>
