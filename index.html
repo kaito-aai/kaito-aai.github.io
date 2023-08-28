@@ -51,7 +51,7 @@
 </h2>
 </header>
 <div class=entry-content>
-<p>Componentへパラメータを渡すとエラー Componentへパラメータを渡せなかったときの原因と解決方法
+<p>Componentへパラメータを渡せなかったときの原因と解決方法
 エラー発生時の実装 タスクの一覧を引数にとってタスクリストを作成するコンポーネントを定義し、タスクの一覧を渡そうとしていた。 taskItems.jsx
 export const TaskItems = (tasks: Task[]) => { const taskElements = tasks.map(t => { return &lt;div className="task" key={t.id}>&lt;/div> }) return (&lt;div className="taskList">{taskElements}&lt;/div>) } home.jsx
 export default function Home() { const tasks: Task[] = [ // 略 ] return ( &lt;main> &lt;TaskItems tasks={tasks}>&lt;/TaskItems> &lt;/main> ) } エラー Typeエラーが出た。
