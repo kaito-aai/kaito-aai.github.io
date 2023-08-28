@@ -52,6 +52,21 @@ Posts
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Componentへパラメータを渡すとエラー
+</h2>
+</header>
+<div class=entry-content>
+<p>Componentへパラメータを渡すとエラー Componentへパラメータを渡せなかったときの原因と解決方法
+エラー発生時の実装 タスクの一覧を引数にとってタスクリストを作成するコンポーネントを定義し、タスクの一覧を渡そうとしていた。 taskItems.jsx
+export const TaskItems = (tasks: Task[]) => { const taskElements = tasks.map(t => { return &lt;div className="task" key={t.id}>&lt;/div> }) return (&lt;div className="taskList">{taskElements}&lt;/div>) } home.jsx
+export default function Home() { const tasks: Task[] = [ // 略 ] return ( &lt;main> &lt;TaskItems tasks={tasks}>&lt;/TaskItems> &lt;/main> ) } エラー Typeエラーが出た。
+Type ‘{ tasks: Task[]; }’ is not assignable to type ‘IntrinsicAttributes & Task[]’. Property ‘tasks’ does not exist on type ‘IntrinsicAttributes & Task[]'....</p>
+</div>
+<footer class=entry-footer><span title="2023-08-29 02:45:20 +0900 +0900">August 29, 2023</span></footer>
+<a class=entry-link aria-label="post link to Componentへパラメータを渡すとエラー" href=https://kaito-aai.github.io/posts/react/passobjecttocomponent/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>React: i18nextで多言語対応
 </h2>
 </header>
@@ -101,7 +116,7 @@ interface A { prop: string; } var a: A = { prop: "a" }; alert(a); </p>
 </article>
 </main>
 <footer class=footer>
-<span>&copy; 2022 <a href=https://kaito-aai.github.io>メモ</a></span>
+<span>&copy; 2023 <a href=https://kaito-aai.github.io>メモ</a></span>
 <span>
 Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
