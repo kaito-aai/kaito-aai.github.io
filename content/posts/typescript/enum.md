@@ -1,7 +1,7 @@
 ---
 title: "TypeScriptのenumがちょっと改善されていた"
 date: 2023-08-30T03:11:38+09:00
-draft: true
+draft: false
 ---
 
 TypeScriptのEnumが型安全になっていた。  
@@ -32,10 +32,11 @@ const fruit: FruitEnum = 6;
 TypeScript 5.0で修正された。  
 https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#all-enums-are-union-enums  
 
-### 備忘: transpile前後の比較
-以下、Enum, Const Enum, Unionのtranspile前後の比較  
+### 備忘: Enum使うか、それ以外の手段を使うか
+型安全になったからEnum使っても問題ないのか、それ以外の手段を使うべきなのかを調べてみた。  
+Enum, Const Enum, Unionをtranspile前後で比較して調査。  
 
-Enumは即時関数を使った形にtranspileされるので、Tree Shakingで振り落とせないデメリットがある。  
+Enumは即時関数を使った形にtranspileされるので、Tree Shakingで使ってないコードを振り落とせないデメリットがある。  
 Const Enumか、Unionを使うのが良いかも。  
 Const EnumにはBabelでtranspileできない等のデメリットがあるらしいが未検証。
 
