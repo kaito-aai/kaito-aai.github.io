@@ -47,6 +47,36 @@
 <main class=main>
 <article class=first-entry>
 <header class=entry-header>
+<h2>TypeScriptのenumがちょっと改善されていた
+</h2>
+</header>
+<div class=entry-content>
+<p>TypeScriptのEnumが型安全になっていた。
+TypeScriptでEnumを使うのが良くないといわれている理由の確認中に見つけたのでメモ。
+ここを使って動作確認をした。
+transpile結果も確認できるので便利。
+https://www.typescriptlang.org/play
+エラー 以下のコードを書いてみたところtypeエラーが出た。
+バージョンアップでエラーが出るように修正された？
+Enumの型安全を検証するコード
+enum FruitEnum { Apple = 0, Orange = 1 } const fruit: FruitEnum = 6; エラーメッセージ
+Type ‘6’ is not assignable to type ‘FruitEnum’.(2322)
+いつからこうなった？ TypeScript 5.0で修正された。
+https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#all-enums-are-union-enums
+備忘: Enum使うか、それ以外の手段を使うか 型安全になったからEnum使っても問題ないのか、それ以外の手段を使うべきなのかを調べてみた。
+Enum, Const Enum, Unionをtranspile前後で比較して調査。
+Enumは即時関数を使った形にtranspileされるので、Tree Shakingで使ってないコードを振り落とせないデメリットがある。
+Const Enumか、Unionを使うのが良いかも。
+Const EnumにはBabelでtranspileできない等のデメリットがあるらしいが未検証。
+Enum transpile前
+enum FruitEnum { Apple, Orange } const fruit: FruitEnum = FruitEnum.Apple; transpile後
+var FruitEnum; (function (FruitEnum) { FruitEnum[FruitEnum["Apple"] = 0] = "Apple"; FruitEnum[FruitEnum["Orange"] = 1] = "Orange"; })(FruitEnum || (FruitEnum = {})); const fruit = FruitEnum....</p>
+</div>
+<footer class=entry-footer><span title="2023-08-30 03:11:38 +0900 +0900">August 30, 2023</span></footer>
+<a class=entry-link aria-label="post link to TypeScriptのenumがちょっと改善されていた" href=https://kaito-aai.github.io/posts/typescript/enum/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Componentへパラメータを渡すとエラー
 </h2>
 </header>
