@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on メモ</title><link>https://kaito-aai.github.io/posts/</link><description>Recent content in Posts on メモ</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 10 Sep 2023 16:28:11 +0900</lastBuildDate><atom:link href="https://kaito-aai.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Next: routingとlayout</title><link>https://kaito-aai.github.io/posts/react/next/routing/</link><pubDate>Sun, 10 Sep 2023 16:28:11 +0900</pubDate><guid>https://kaito-aai.github.io/posts/react/next/routing/</guid><description>デフォルトのファイル配置や命名を整理していたところ、routingが効かなくなったり、layoutが存在しないと怒られたりしたので調べてみたことのメモ。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on メモ</title><link>https://kaito-aai.github.io/posts/</link><description>Recent content in Posts on メモ</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 24 Nov 2023 02:20:38 +0900</lastBuildDate><atom:link href="https://kaito-aai.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>XSSをお試し</title><link>https://kaito-aai.github.io/posts/javascript/xss/xss/</link><pubDate>Fri, 24 Nov 2023 02:20:38 +0900</pubDate><guid>https://kaito-aai.github.io/posts/javascript/xss/xss/</guid><description>入力をバリデーション・サニタイズしなかった場合、どのようにXSSを実行できるか試したときのメモ。
+HTMLインジェクションからのXSSをお試し。
+ブラウザはfirefoxを使用。
+やったこと概要 安全でないsinkを使ってユーザーの入力値をページに反映する。
+入力をページに反映させるfunctionをsinkと呼ぶ。
+入力をページに反映させる場合は、安全なsink(=危ないデータをサニタイズしてくれる・文字列として扱ってくれるsink)を使用するべき。
+安全なsinkは以下。
+https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html#safe-sinks
+安全・安全じゃないものの例
+textContentは安全(値を文字列として扱ってくれる)だが、innerHTMLは安全ではない。
+(innerHTMLは&amp;lt;script&amp;gt;タグのスクリプトを実行しない。しかし、&amp;lt;object&amp;gt;タグなどのスクリプトは実行されてしまうので、安全ではない。)
+XSSできちゃうコード例（innerHTMLを使った場合） innerHTMLをつかってページへ入力値を反映し、スクリプトを埋め込む。
+index.html
+&amp;lt;div class=&amp;#34;input-area&amp;#34;&amp;gt; &amp;lt;input id=&amp;#34;input&amp;#34; value&amp;gt; &amp;lt;button onclick=&amp;#34;onSubmitButtonClick()&amp;#34;&amp;gt;Submit&amp;lt;/button&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;message-area&amp;#34;&amp;gt; &amp;lt;p id=&amp;#34;message&amp;#34;&amp;gt;Enter your name&amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;script src=&amp;#34;./main.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; main.js
+const setMessage = (message) =&amp;gt; { // 表示するメッセージを設定 // 悪意のある入力に含まれるスクリプト実行を再現するため、入力制限・サニタイズせず、innerHTMLへ入力値を設定してしまった体で const p = document.getElementById(&amp;#34;message&amp;#34;); p.innerHTML = &amp;#34;hello &amp;#34; + message + &amp;#34;!&amp;#34;; } const onSubmitButtonClick = () =&amp;gt; { const input = document.getElementById(&amp;#34;input&amp;#34;); // 入力内容を保存し、メッセージとエリアに入力内容を表示する localStorage.</description></item><item><title>Next: routingとlayout</title><link>https://kaito-aai.github.io/posts/react/next/routing/</link><pubDate>Sun, 10 Sep 2023 16:28:11 +0900</pubDate><guid>https://kaito-aai.github.io/posts/react/next/routing/</guid><description>デフォルトのファイル配置や命名を整理していたところ、routingが効かなくなったり、layoutが存在しないと怒られたりしたので調べてみたことのメモ。
 参考: https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
 NextのRouter Next.js uses a file-system based router
 app(Pages Routerの場合はpages)ディレクトリ配下のディレクトリ構造がrouteになる。

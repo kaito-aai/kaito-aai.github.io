@@ -52,6 +52,31 @@ Posts
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>XSSをお試し
+</h2>
+</header>
+<div class=entry-content>
+<p>入力をバリデーション・サニタイズしなかった場合、どのようにXSSを実行できるか試したときのメモ。
+HTMLインジェクションからのXSSをお試し。
+ブラウザはfirefoxを使用。
+やったこと概要 安全でないsinkを使ってユーザーの入力値をページに反映する。
+入力をページに反映させるfunctionをsinkと呼ぶ。
+入力をページに反映させる場合は、安全なsink(=危ないデータをサニタイズしてくれる・文字列として扱ってくれるsink)を使用するべき。
+安全なsinkは以下。
+https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html#safe-sinks
+安全・安全じゃないものの例
+textContentは安全(値を文字列として扱ってくれる)だが、innerHTMLは安全ではない。
+(innerHTMLは&lt;script>タグのスクリプトを実行しない。しかし、&lt;object>タグなどのスクリプトは実行されてしまうので、安全ではない。)
+XSSできちゃうコード例（innerHTMLを使った場合） innerHTMLをつかってページへ入力値を反映し、スクリプトを埋め込む。
+index.html
+&lt;div class="input-area"> &lt;input id="input" value> &lt;button onclick="onSubmitButtonClick()">Submit&lt;/button> &lt;/div> &lt;div class="message-area"> &lt;p id="message">Enter your name&lt;/p> &lt;/div> &lt;script src="./main.js">&lt;/script> main.js
+const setMessage = (message) => { // 表示するメッセージを設定 // 悪意のある入力に含まれるスクリプト実行を再現するため、入力制限・サニタイズせず、innerHTMLへ入力値を設定してしまった体で const p = document.getElementById("message"); p.innerHTML = "hello " + message + "!"; } const onSubmitButtonClick = () => { const input = document.getElementById("input"); // 入力内容を保存し、メッセージとエリアに入力内容を表示する localStorage....</p>
+</div>
+<footer class=entry-footer><span title="2023-11-24 02:20:38 +0900 +0900">November 24, 2023</span></footer>
+<a class=entry-link aria-label="post link to XSSをお試し" href=https://kaito-aai.github.io/posts/javascript/xss/xss/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Next: routingとlayout
 </h2>
 </header>
