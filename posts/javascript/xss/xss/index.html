@@ -154,7 +154,7 @@ textContentは安全(値を文字列として扱ってくれる)だが、innerHT
 <blockquote>
 <p>user</p>
 </blockquote>
-<p><img loading=lazy src=./images/input.png alt=input>
+<p><img loading=lazy src=../../../../static/javascript/xss/images/input.png alt=input>
 </p>
 <h3 id=スクリプトを含むdomを値として入力した場合>スクリプトを含むDOMを値として入力した場合<a hidden class=anchor aria-hidden=true href=#スクリプトを含むdomを値として入力した場合>#</a></h3>
 <p>DOMが挿入されてしまう。<br>
@@ -163,10 +163,10 @@ textContentは安全(値を文字列として扱ってくれる)だが、innerHT
 <blockquote>
 <p>&lt;object data=&ldquo;javascript:alert(document.cookie)"></p>
 </blockquote>
-<p><img loading=lazy src=./images/evil-input.png alt=evil-input>
+<p><img loading=lazy src=../../../../static/javascript/xss/images/evil-input.png alt=evil-input>
 </p>
 <p>悪意のあるスクリプトが実行されたときの画面
-<img loading=lazy src=./images/evil-input-executed.png alt=evil-input-executed>
+<img loading=lazy src=../../../../static/javascript/xss/images/evil-input-executed.png alt=evil-input-executed>
 </p>
 <h2 id=textcontentだったらどうなるか>textContentだったらどうなるか<a hidden class=anchor aria-hidden=true href=#textcontentだったらどうなるか>#</a></h2>
 <p>値が文字列として扱われるので、値に含まれるスクリプトが実行されない。</p>
@@ -180,7 +180,7 @@ textContentは安全(値を文字列として扱ってくれる)だが、innerHT
 <blockquote>
 <p>&lt;object data=&ldquo;javascript:alert(document.cookie)"></p>
 </blockquote>
-<p><img loading=lazy src=./images/sanitized-input.png alt=sanitized-input>
+<p><img loading=lazy src=../../../../static/javascript/xss/images/sanitized-input.png alt=sanitized-input>
 </p>
 </div>
 <footer class=post-footer>
