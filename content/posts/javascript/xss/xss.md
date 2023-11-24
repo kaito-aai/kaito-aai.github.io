@@ -72,7 +72,7 @@ const onSubmitButtonClick = () => {
 入力値は以下
 > user
 
-![input](./images/input.png)
+![input](../../../../static/javascript/xss/images/input.png)
 
 ### スクリプトを含むDOMを値として入力した場合  
 DOMが挿入されてしまう。  
@@ -81,10 +81,10 @@ DOMが挿入されてしまう。
 入力値は以下
 > \<object data="javascript:alert(document.cookie)">
 
-![evil-input](./images/evil-input.png)
+![evil-input](../../../../static/javascript/xss/images/evil-input.png)
 
 悪意のあるスクリプトが実行されたときの画面
-![evil-input-executed](./images/evil-input-executed.png)
+![evil-input-executed](../../../../static/javascript/xss/images/evil-input-executed.png)
 
 ## textContentだったらどうなるか
 値が文字列として扱われるので、値に含まれるスクリプトが実行されない。  
@@ -101,4 +101,4 @@ const setMessage = (message) => {
 入力値は以下
 > \<object data="javascript:alert(document.cookie)">
 
-![sanitized-input](./images/sanitized-input.png)
+![sanitized-input](../../../../static/javascript/xss/images/sanitized-input.png)
